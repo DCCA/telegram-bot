@@ -43,6 +43,7 @@ exports.getTicker = (req, res, next) => {
 			}
 			currencyName = data[0].name;
 			formattedPrice = numeral(data[0].price).format('$ 0.0000');
+			d1PriceChange = numeral(data[0]['1d'].price_change_pct).format('0.00%');
 		})
 		.then((result) => {
 			fetch(`https://api.telegram.org/bot${TELEGRAM_API}/sendMessage`, {
@@ -53,7 +54,7 @@ exports.getTicker = (req, res, next) => {
 				body: JSON.stringify({
 					from: 'CryptoBot',
 					parse_mode: 'HTML',
-					text: `<strong>${currencyName}</strong>: ${formattedPrice} | `,
+					text: `<strong>${currencyName}</strong>: ${formattedPrice} | d1: ${d1PriceChange}`,
 					chat_id: chatId,
 				}),
 			})

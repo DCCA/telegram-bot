@@ -32,6 +32,7 @@ exports.getTicker = (req, res, next) => {
 		})
 		.then((res) => {
 			fetch(`https://api.telegram.org/bot${TELEGRAM_API}/sendMessage`, {
+				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},

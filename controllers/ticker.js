@@ -14,7 +14,7 @@ exports.getTicker = (req, res, next) => {
 	let currencyName;
 	let formattedPrice;
 	let d1PriceChange;
-	let d1PriceChange;
+	let d7PriceChange;
 	// Build the URI
 	const uri = `https://api.nomics.com/v1/currencies/ticker?key=${NOMICS_API}&ids=${currencyId}&interval=1d,7d`;
 	// Get response

@@ -24,11 +24,5 @@ exports.getTicker = async (req, res, next) => {
 	console.log(data);
 	const currencyName = data[0].name;
 	const formattedPrice = await numeral(data[0].price).format('$ 0.0000');
-	return res.status(200).json({
-		message: {
-			id: currencyId,
-			currency: currencyName,
-			price: formattedPrice,
-		},
-	});
+	return res.status(200).json(true);
 };

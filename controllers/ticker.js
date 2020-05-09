@@ -1,4 +1,4 @@
-const NOMICS_API = require('../utils/keys').NOMICS_API;
+const NOMICS_API = process.env.NOMICS_API;
 const fetch = require('node-fetch');
 const numeral = require('numeral');
 

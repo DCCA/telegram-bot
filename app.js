@@ -25,4 +25,5 @@ app.use((error, req, res, next) => {
 });
 
 // Start server
+console.log(process.env.PORT);
 app.listen(process.env.PORT || 3000);

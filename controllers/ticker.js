@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const numeral = require('numeral');
 
 exports.getTicker = async (req, res, next) => {
+	console.log(req);
 	// Change this currency to get from chatbot
 	const currencyId = req.body.result[0].message.text;
 	// Build the URI

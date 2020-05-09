@@ -7,6 +7,7 @@ exports.getTicker = (req, res, next) => {
 	// Change this currency to get from chatbot
 	const currencyId = req.body.message.text.toUpperCase();
 	const chatId = req.body.message.chat.id;
+	console.log(req.body.message);
 	let currencyName;
 	let formattedPrice;
 	// Build the URI
@@ -48,7 +49,8 @@ exports.getTicker = (req, res, next) => {
 				},
 				body: JSON.stringify({
 					from: 'CryptoBot',
-					text: `${currencyName}: ${formattedPrice}`,
+					parse_mode: 'HTML',
+					text: `<strong>${currencyName}</strong>: ${formattedPrice} | `,
 					chat_id: chatId,
 				}),
 			})

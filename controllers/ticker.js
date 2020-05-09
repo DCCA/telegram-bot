@@ -18,8 +18,8 @@ exports.getTicker = (req, res, next) => {
 			'Content-Type': 'application/json',
 		},
 	})
-		.then((res) => {
-			return res.json();
+		.then((ressult) => {
+			return ressult.json();
 		})
 		.then((data) => {
 			if (!data) {
@@ -30,7 +30,7 @@ exports.getTicker = (req, res, next) => {
 			currencyName = data[0].name;
 			formattedPrice = numeral(data[0].price).format('$ 0.0000');
 		})
-		.then((res) => {
+		.then((ressult) => {
 			fetch(`https://api.telegram.org/bot${TELEGRAM_API}/sendMessage`, {
 				method: 'POST',
 				headers: {
@@ -42,13 +42,13 @@ exports.getTicker = (req, res, next) => {
 					chat_id: chatId,
 				}),
 			})
-				.then((res) => {
-					console.log(res);
-					return res.status(200).json(true);
+				.then((ressult) => {
+					console.log(ressult);
 				})
 				.catch((err) => {
 					console.log(err);
 				});
+			return res.status(200).json(true);
 		})
 		.catch((err) => {
 			console.log(err);

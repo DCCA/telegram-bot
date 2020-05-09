@@ -4,6 +4,6 @@ const tickerController = require('../controllers/ticker');
 const router = express.Router();
 // https://api.nomics.com/v1/currencies/ticker?key=&ids=BTC
 
-router.get('/ticker', tickerController.getTicker);
+router.post('/ticker', tickerController.getTicker);
 
 module.exports = router;

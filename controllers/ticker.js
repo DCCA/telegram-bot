@@ -7,7 +7,7 @@ exports.getTicker = (req, res, next) => {
 	console.log(req.body);
 	// Change this currency to get from chatbot
 	const currencyId = req.body.message.text;
-	const chatId = req.body.chat.id;
+	const chatId = req.body.message.chat.id;
 	let currencyName;
 	let formattedPrice;
 	// Build the URI

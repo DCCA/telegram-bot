@@ -4,9 +4,8 @@ const fetch = require('node-fetch');
 const numeral = require('numeral');
 
 exports.getTicker = (req, res, next) => {
-	console.log(req.body);
 	// Change this currency to get from chatbot
-	const currencyId = req.body.message.text;
+	const currencyId = req.body.message.text.toUpperCase();
 	const chatId = req.body.message.chat.id;
 	let currencyName;
 	let formattedPrice;
@@ -33,13 +32,9 @@ exports.getTicker = (req, res, next) => {
 						text: `No data found`,
 						chat_id: chatId,
 					}),
-				})
-					.then((result) => {
-						console.log(result);
-					})
-					.catch((err) => {
-						console.log(err);
-					});
+				}).catch((err) => {
+					console.log(err);
+				});
 				return res.status(200).json(true);
 			}
 			currencyName = data[0].name;
@@ -66,6 +61,7 @@ exports.getTicker = (req, res, next) => {
 			return res.status(200).json(true);
 		})
 		.catch((err) => {
-			console.log(err);
+			const error = new Error(err);
+			throw error;
 		});
 };

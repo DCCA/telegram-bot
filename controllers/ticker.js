@@ -6,6 +6,9 @@ const numeral = require('numeral');
 exports.getTicker = (req, res, next) => {
 	// Change this currency to get from chatbot
 	const currencyId = req.body.message.text.toUpperCase();
+	if (text[0] === '/') {
+		currencyId = text.split('/')[1];
+	}
 	const chatId = req.body.message.chat.id;
 	console.log(req.body.message);
 	let currencyName;

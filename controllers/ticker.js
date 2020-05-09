@@ -3,9 +3,9 @@ const fetch = require('node-fetch');
 const numeral = require('numeral');
 
 exports.getTicker = async (req, res, next) => {
-	console.log(req);
+	console.log(req.body);
 	// Change this currency to get from chatbot
-	const currencyId = req.body.result[0].message.text;
+	const currencyId = req.body.message.text;
 	// Build the URI
 	const uri = `https://api.nomics.com/v1/currencies/ticker?key=${NOMICS_API}&ids=${currencyId}&interval=1d`;
 	// Get response

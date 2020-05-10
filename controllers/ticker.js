@@ -31,7 +31,7 @@ exports.getTicker = (req, res, next) => {
 					},
 					body: JSON.stringify({
 						from: 'CryptoBot',
-						text: `No data found`,
+						text: `No data found.`,
 						chat_id: chatId,
 					}),
 				}).catch((err) => {

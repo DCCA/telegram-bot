@@ -65,10 +65,10 @@ exports.getTicker = (req, res, next) => {
 					parse_mode: 'HTML',
 					text: `<strong>Report</strong>:
                     <strong>${currencyName}</strong>: ${formattedPrice}
-                    <strong>D1 - Price Var.</strong>: ${d1PriceChange}
-                    <strong>D7 - Price Var.</strong>: ${d7PriceChange}
-                    <strong>D30 - Price Var.</strong>: ${d30PriceChange}
-                    <strong>D365 - Price Var.</strong>: ${d365PriceChange}`,
+                    <strong>D1 - P. Var.</strong>: ${d1PriceChange}
+                    <strong>D7 - P. Var.</strong>: ${d7PriceChange}
+                    <strong>D30 - P. Var.</strong>: ${d30PriceChange}
+                    <strong>D365 - P. Var.</strong>: ${d365PriceChange}`,
 					chat_id: chatId,
 				}),
 			})

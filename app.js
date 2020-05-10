@@ -15,9 +15,6 @@ app.use(bodyParser.json());
 
 // Add routes
 app.use(tickerRoutes);
-app.get('/', (req, res, next) => {
-	res.send('<h1>Connected</h2>');
-});
 
 // Error handling
 app.use((error, req, res, next) => {
@@ -25,5 +22,4 @@ app.use((error, req, res, next) => {
 });
 
 // Start server
-console.log(process.env.PORT);
 app.listen(process.env.PORT || 3000);

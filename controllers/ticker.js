@@ -75,4 +75,5 @@ exports.getTicker = (req, res, next) => {
 			const error = new Error(err);
 			throw error;
 		});
+	return res.status(200).json(true);
 };

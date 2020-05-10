@@ -49,10 +49,8 @@ exports.getTicker = (req, res, next) => {
 			formattedPrice = numeral(data[0].price).format('$ 0.0000');
 			d1PriceChange = numeral(data[0]['1d'].price_change_pct).format('0.00%');
 			d7PriceChange = numeral(data[0]['7d'].price_change_pct).format('0.00%');
-			d30PriceChange = numeral(data[0]['30d'].price_change_pct).format('0.00%');
-			d365PriceChange = numeral(data[0]['365d'].price_change_pct).format(
-				'0.00%'
-			);
+			d30PriceChange = numeral(data[0]['30d'].price_change_pct).format('0%');
+			d365PriceChange = numeral(data[0]['365d'].price_change_pct).format('0%');
 		})
 		.then((result) => {
 			fetch(`https://api.telegram.org/bot${TELEGRAM_API}/sendMessage`, {
@@ -63,12 +61,7 @@ exports.getTicker = (req, res, next) => {
 				body: JSON.stringify({
 					from: 'CryptoBot',
 					parse_mode: 'HTML',
-					text: `<strong>Report</strong>:
-                    <strong>${currencyName}</strong>: ${formattedPrice}
-                    <strong>D1 - P. Var.</strong>: ${d1PriceChange}
-                    <strong>D7 - P. Var.</strong>: ${d7PriceChange}
-                    <strong>D30 - P. Var.</strong>: ${d30PriceChange}
-                    <strong>D365 - P. Var.</strong>: ${d365PriceChange}`,
+					text: `<strong>Report</strong>:&#13;<strong>${currencyName}</strong>: ${formattedPrice}&#13;<strong>D1 - P. Var.</strong>: ${d1PriceChange}&#13;<strong>D7 - P. Var.</strong>: ${d7PriceChange}&#13;<strong>D30 - P. Var.</strong>: ${d30PriceChange}&#13;<strong>D365 - P. Var.</strong>: ${d365PriceChange}`,
 					chat_id: chatId,
 				}),
 			})

@@ -58,9 +58,9 @@ exports.getTicker = (req, res, next) => {
 					from: 'CryptoBot',
 					parse_mode: 'HTML',
 					text: `<strong>Report</strong>: 
-                            &#10<strong>${currencyName}</strong>: ${formattedPrice}
-                            &#10<strong>D1 - Price Variation</strong>: ${d1PriceChange}
-                            &#10<strong>D7 - Price Variation</strong>: ${d7PriceChange}`,
+                            <strong>${currencyName}</strong>: ${formattedPrice}
+                            <strong>D1 - Price Variation</strong>: ${d1PriceChange}
+                            <strong>D7 - Price Variation</strong>: ${d7PriceChange}`,
 					chat_id: chatId,
 				}),
 			})

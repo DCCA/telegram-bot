@@ -15,8 +15,10 @@ exports.getTicker = (req, res, next) => {
 	let formattedPrice;
 	let d1PriceChange;
 	let d7PriceChange;
+	let d30PriceChange;
+	let d365PriceChange;
 	// Build the URI
-	const uri = `https://api.nomics.com/v1/currencies/ticker?key=${NOMICS_API}&ids=${currencyId}&interval=1d,7d`;
+	const uri = `https://api.nomics.com/v1/currencies/ticker?key=${NOMICS_API}&ids=${currencyId}&interval=1d,7d,30d,365d`;
 	// Get response
 	fetch(uri, {
 		headers: {
@@ -47,6 +49,10 @@ exports.getTicker = (req, res, next) => {
 			formattedPrice = numeral(data[0].price).format('$ 0.0000');
 			d1PriceChange = numeral(data[0]['1d'].price_change_pct).format('0.00%');
 			d7PriceChange = numeral(data[0]['7d'].price_change_pct).format('0.00%');
+			d30PriceChange = numeral(data[0]['30d'].price_change_pct).format('0.00%');
+			d365PriceChange = numeral(data[0]['365d'].price_change_pct).format(
+				'0.00%'
+			);
 		})
 		.then((result) => {
 			fetch(`https://api.telegram.org/bot${TELEGRAM_API}/sendMessage`, {
@@ -60,7 +66,9 @@ exports.getTicker = (req, res, next) => {
 					text: `<strong>-----MiniReport-----</strong>
                     <strong>${currencyName}</strong>: ${formattedPrice}
                     <strong>D1 - Price Variation</strong>: ${d1PriceChange}
-                    <strong>D7 - Price Variation</strong>: ${d7PriceChange}`,
+                    <strong>D7 - Price Variation</strong>: ${d7PriceChange}
+                    <strong>D30 - Price Variation</strong>: ${d30PriceChange}
+                    <strong>D365 - Price Variation</strong>: ${d365PriceChange}`,
 					chat_id: chatId,
 				}),
 			})

@@ -63,8 +63,7 @@ exports.getTicker = (req, res, next) => {
 				body: JSON.stringify({
 					from: 'CryptoBot',
 					parse_mode: 'HTML',
-					text: `
-                    <strong>-----MiniReport-----</strong>
+					text: `<strong>Report</strong>:
                     <strong>${currencyName}</strong>: ${formattedPrice}
                     <strong>D1 - Price Variation</strong>: ${d1PriceChange}
                     <strong>D7 - Price Variation</strong>: ${d7PriceChange}

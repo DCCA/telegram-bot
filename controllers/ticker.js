@@ -63,7 +63,13 @@ exports.getTicker = (req, res, next) => {
 				body: JSON.stringify({
 					from: 'CryptoBot',
 					parse_mode: 'HTML',
-					text: `<strong>-----MiniReport-----</strong>&#13;<strong>${currencyName}</strong>: ${formattedPrice}&#13;<strong>D1 - Price Variation</strong>: ${d1PriceChange}&#13;<strong>D7 - Price Variation</strong>: ${d7PriceChange}&#13;<strong>D30 - Price Variation</strong>: ${d30PriceChange}&#13;<strong>D365 - Price Variation</strong>: ${d365PriceChange}`,
+					text: `
+                    <strong>-----MiniReport-----</strong>
+                    <strong>${currencyName}</strong>: ${formattedPrice}
+                    <strong>D1 - Price Variation</strong>: ${d1PriceChange}
+                    <strong>D7 - Price Variation</strong>: ${d7PriceChange}
+                    <strong>D30 - Price Variation</strong>: ${d30PriceChange}
+                    <strong>D365 - Price Variation</strong>: ${d365PriceChange}`,
 					chat_id: chatId,
 				}),
 			})
